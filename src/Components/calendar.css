@@ -1,0 +1,83 @@
+
+
+.calendar {
+    
+    border: 2px solid black;
+    width: 355px;
+}
+
+.table {
+    margin-bottom: 65px;
+    /* padding: 182px; */
+    background-color: white;
+    border-spacing: 28px;
+    border-collapse: collapse;
+    width: 311px;
+}
+    
+
+.trheader {
+    border-bottom: 1px dashed black;
+    font-size: 28px;
+}
+
+.trheader td {
+    border-spacing: 0;
+    padding-left: 5px;
+}
+
+.day,
+.emptyslot,
+.week-day {
+    text-align: center;
+    height: 40px;
+}
+
+.week-day {
+    font-size: 12px;
+}
+
+.day {
+    font-size: 12px;
+}
+
+.day {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+}
+
+
+
+.month-popup {
+    
+    padding: 5px;
+    background: white;
+    border: 2px solid black;
+}
+
+
+
+.month {
+    
+    top: 0.6em;
+    font-size: 0.6em;
+    right:3px;
+}
+
+
+
+.edityear {
+    max-width: 3.6em;
+}
+
+.month,
+.year {
+    font-size: 0.6em;
+}
+
+.month {
+    cursor: pointer;
+}
+

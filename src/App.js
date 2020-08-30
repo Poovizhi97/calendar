@@ -9,11 +9,14 @@ class App extends Component{
    super(props);
    this.state={}
    }
+   onDayClick=(e,day)=>{
+      alert(day);
+   }
 
 render(){
        return(
            
-                <Calendar/>
+                <Calendar onDayClick={(e,day)=>this.onDayClick(e,day)}/>
            
            
        )

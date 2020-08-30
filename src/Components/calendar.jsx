@@ -1,5 +1,6 @@
 import React,{Component} from "react";
 import moment from "moment";  //moment library take care of all the date  manupulation
+import "../Components/calendar.css";
 
 class Calendar extends Component{
     constructor(props){
@@ -45,8 +46,25 @@ class Calendar extends Component{
      return firstDay;
  }
 
+ nextMonth=()=>{
+     let dateType=Object.assign({},this.state.dateType);
+     dateType=moment(dateType).add(1,"month");
+     this.setState({
+         dateType:dateType
+     });
+     this.props.onNextMonth && this.props.onNextMonth();
+ }
+ prevMonth=()=>{
+    let dateType=Object.assign({},this.state.dateType);
+    dateType=moment(dateType).subtract(1,"month");
+    this.setState({
+        dateType:dateType
+    });
+    this.props.onPrevMonth && this.props.onPrevMonth();
+}
 
- 
+
+
 setMonth=(month)=>{
     let monthNo=this.months.indexOf(month);
     let dateType=Object.assign({},this.state.dateType);
@@ -68,7 +86,7 @@ onSelectChange=(e,data)=>{
      let popup=props.data.map((data)=>{
          return(
              <div key={data}>
-                 <a href="#" onClick={(e)=>{this.onSelectChange(e,data)}}>
+                 <a  onClick={(e)=>{this.onSelectChange(e,data)}}>
                      {data}
                  </a>
              </div>
@@ -133,7 +151,9 @@ YearNav=()=>{
     )
 }
 
-
+onDayClick=(e,day)=>{
+    this.props.onDayClick && this.props.onDayClick(e,day);
+}
 
  render(){
 
@@ -162,10 +182,10 @@ YearNav=()=>{
 
     let daysInMonth=[];
     for(let d=1; d<=this.daysInMonth(); d++){
-        let className=(d===this.currentDay()?"day current-day":"day");
+        let className=(d===this.currentDay()?" current-day":"day");
         daysInMonth.push(
             <td key={d} className={className}>
-                <span>{d}</span>
+                <span onClick={(e)=>{this.onDayClick(e,d)}}>{d}</span>
             </td>
         )
     }
@@ -209,6 +229,12 @@ YearNav=()=>{
                              <this.MonthNav/>
 
                              <this.YearNav/>
+                         </td>
+                         <td col="2" className="navmonth">
+                             <i className="icon fa fa-fw fa-chevron-left"
+                             onClick={(e)=>{this.prevMonth()}}></i>
+                             <i className="icon fa fa-fw fa-chevron-right"
+                             onClick={(e)=>{this.nextMonth()}}></i>
                          </td>
                      </tr>
                  </thead>
